@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load article_markdown %}
+
+{% block 'content' %}
+    <h1>{{ post.title }}</h1>
+    <h6>{{ post.slug }} | {{ post.pub_date }}</h6>
+    <hr/>
+    <div>{{ post.content|markdownify }}</div>
+    <hr/>
+    <p><a href="{% url 'article:list' %}">&laquo; 返回文章列表</a></p>
+{% endblock 'content' %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block 'content' %}
+    {% for post in posts %}
+        <h1><a href="{% url 'article:detail' post.pk %}">{{ post.title }}</a></h1>
+        <h6>{{ post.slug }} | {{ post.pub_date }}</h6>
+        <hr/>
+    {% endfor %}
+{% endblock 'content' %}

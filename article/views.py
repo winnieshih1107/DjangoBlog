@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from article.models import  Post
 from datetime import datetime
@@ -20,4 +20,10 @@ def index(request):
     now = datetime.now()
     posts = Post.objects.all()
     
-    return render(request, "index.html", {'posts': posts, 'now': now})
+    return render(request, "article/list.html", {'posts': posts, 'now': now})
+
+
+def detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    return render(request, "article/detail.html", {'post': post})
